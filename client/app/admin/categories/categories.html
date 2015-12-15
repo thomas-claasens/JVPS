@@ -1,0 +1,38 @@
+<navbar></navbar>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-11" style='background-color:transparent'>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Categories</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-2">
+							<p>
+								<button class='btn btn-default' ui-sref="editcategory({id: -1})">New Category</button>
+							</p>
+						</div>
+						
+					</div>
+					<hr/>
+					<div class="row">
+						<div class="col-md-2">
+							<div data-ng-repeat="cat in vm.categories">
+								<a ui-sref="editcategory({id: cat._id})">{{cat.name}}</a>
+								<a ng-click="vm.deleteCategory(cat)" class="trash" href='#'><span class="glyphicon glyphicon-trash pull-right"></span></a>
+							</div>
+						</div>
+						<!--<div class="col-md-2">
+							{{vm.newCategory |json}}
+						</div>-->
+						<!--<div class="col-md-4">
+							
+						</div>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer></footer>

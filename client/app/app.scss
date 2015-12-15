@@ -1,0 +1,70 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+@import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+@import '../bower_components/bootstrap-social/bootstrap-social.scss';
+$fa-font-path: "../bower_components/font-awesome/fonts";
+@import '../bower_components/font-awesome/scss/font-awesome';
+
+/**
+ * App-wide Styles
+ */
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  min-width: 900px;
+  text-align: center;
+  font-size: 9pt;
+  background-image: url(/assets/images/wallpaper.jpg);
+  margin: 5 5 5 5;
+}
+.container {
+  top: 41px;
+}
+.logo {
+  margin: 5 5 5 5px;
+  padding: 0px;
+  height: 40px;
+  background-image: url(/assets/images/Logo_background.png);
+  //  background-repeat: no-repeat; 
+  h1 {
+    margin: 0;
+    padding: 25px 0 0 20px;
+    /* visibility: hidden; */
+  }
+}
+
+// .navbar-bottom {
+//   position: absolute;
+//   bottom: 0;
+//   width: 100%;
+//   /* Set the fixed height of the footer here */
+//   height: 60px;
+//   background-color: #f5f5f5;
+// }
+// Component styles are injected through grunt
+// injector
+@import 'admin/admin.scss';
+@import 'admin/categories/categories.scss';
+@import 'admin/categories/editcategory/editcategory.scss';
+@import 'admin/countries/countries.scss';
+@import 'admin/hearfromus/hearfromus.scss';
+@import 'admin/mailinglist/mailinglist.scss';
+@import 'admin/orders/orders.scss';
+@import 'admin/postagebands/postagebands.scss';
+@import 'admin/postagezones/postagezones.scss';
+@import 'admin/reports/reports.scss';
+@import 'admin/reviews/reviews.scss';
+@import 'admin/stock/stock.scss';
+@import 'admin/users/users.scss';
+@import 'main/main.scss';
+@import '../components/footer/footer.scss';
+@import '../components/modal/modal.scss';
+@import '../components/oauth-buttons/oauth-buttons.scss';
+// endinjector
+
