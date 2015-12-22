@@ -13,15 +13,18 @@ angular.module('jvapesApp')
 
     $scope.saveCategory = function (form) {
       if ($scope.categoryId != -1) {
-        $log.info(form);
+        $log.info(angular.toJson($scope.category))
         if ($scope.category.parent == "") {
           $scope.category.parent = undefined;
+        }
+        if($scope.category.active == undefined){
+          $scope.category.active = false;
         }
         $http.put('/api/categories/' + $scope.category._id, $scope.category).then(response => { 
           
         });
       } else {
-        $log.info(form);
+        $log.info(angular.toJson($scope.category));
          if ($scope.category.parent == "") {
           $scope.category.parent = undefined;
         }

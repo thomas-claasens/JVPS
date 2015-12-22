@@ -16,7 +16,7 @@
         </li>
       </ul>
     <ul class="nav navbar-nav navbar-right">
-       <li class="dropdown">
+       <li class="dropdown" ng-show="nav.isAdmin()">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="orders">Orders</a></li>
