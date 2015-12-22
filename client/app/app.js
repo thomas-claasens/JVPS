@@ -12,7 +12,8 @@ angular.module('jvapesApp', [
   'ui.bootstrap',
   'validation.match',
   'angularFileUpload',
-  'textAngular'
+  'textAngular',
+  'angular-loading-bar'
  
 ])
   .config(function($urlRouterProvider, $locationProvider) {
