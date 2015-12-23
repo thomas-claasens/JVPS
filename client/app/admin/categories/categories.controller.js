@@ -4,7 +4,7 @@
 
   class CategoriesCtrl {
 
-    constructor($http, $scope, $log, Modal, socket, FileUploader) {
+    constructor($http, $scope, $log, Modal, socket) {
 
       this.$http = $http;
       this.categories = [];

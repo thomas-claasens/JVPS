@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var CategorySchema = new Schema({
   name: String,
-  //urlName: String,
+  imageUrlName: String,
   active: Boolean,
   parent: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'}
 });

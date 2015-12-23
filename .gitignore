@@ -29,3 +29,4 @@ client/bower_components/
 .tmp
 dist/
 .sass-cache/
+client/assets/images/upload/

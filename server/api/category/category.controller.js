@@ -11,7 +11,7 @@
 
 var _ = require('lodash');
 var Category = require('./category.model');
-
+import path from 'path';
 function handleError(res, statusCode) {
  
   statusCode = statusCode || 500;
@@ -60,6 +60,19 @@ function removeEntity(res) {
     }
   };
 }
+
+exports.uploadImage = function (req, res, next) {
+    var data = _.pick(req.body, 'type')
+        , uploadPath = path.normalize('assets/uploads')
+        , file = req.files.file;
+
+        console.log(file.name); //original name (ie: sunset.png)
+        console.log(file.path); //tmp path (ie: /tmp/12345-xyaz.png)
+        console.log(uploadPath); //uploads directory: (ie: /home/user/data/uploads)
+        // client\\assets\\images\\upload\\AoP8gcyDcIjZW7I7uu1nV8V3.jpg"
+        res.send(file.path.substring(7, file.path.length)).status(200).end();
+        //return data;// res.status(200).end();
+};
 
 // Gets a list of Categorys
 exports.index = function(req, res) {
