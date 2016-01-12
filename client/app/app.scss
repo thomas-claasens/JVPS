@@ -17,7 +17,7 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  min-width: 900px;
+//  min-width: 900px;
   text-align: center;
   font-size: 9pt;
   background-image: url(/assets/images/wallpaper.jpg);
@@ -38,7 +38,50 @@ body {
     /* visibility: hidden; */
   }
 }
+$color_santas_gray_approx: #a5a0b0;
+$silver: #c0c0c0;
 
+.mainMenu {
+	background-color: $color_santas_gray_approx;
+	float: left;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	li {
+		float: left;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		border-bottom: 1px solid $silver;
+	}
+}
+
+//colors
+$color_santas_gray_approx: #a5a0b0;
+$black: #000;
+$silver: #c0c0c0;
+$color_bombay_approx: #b5b0c0;
+
+//urls
+$url_0: url(Images/menu_item.png);
+$url_1: url(Images/menu_item_hover.png);
+
+.mainMenu a {
+	background: $color_santas_gray_approx $url_0 center left no-repeat;
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 5px 12px 5px 30px;
+	text-decoration: none;
+	color: $black;
+	font-weight: bold;
+	width: 100px;
+	border-right: 1px solid $silver;
+	&:hover {
+		background: $color_bombay_approx $url_1 center left no-repeat;
+	}
+}
 // .navbar-bottom {
 //   position: absolute;
 //   bottom: 0;
