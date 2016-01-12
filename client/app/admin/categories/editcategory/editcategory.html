@@ -30,23 +30,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="btn btn-default" ngf-select="upload($file)">Upload on file select</div>
-                                <!--<div class="btn btn-default" ngf-select="uploadFiles($files)" multiple="multiple">Upload on files select</div>-->
                                 <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
-
                                 Image thumbnail: <img ngf-thumbnail="file || '/thumb.jpg'" ngf-size="{width: 20, height: 20, quality: 0.9}">
-                                <!--<input type="file" nv-file-select uploader="uploader" />
-								<br/>
-								<ul>
-									<li ng-repeat="item in uploader.queue">
-										Name: <span ng-bind="item.file.name"></span>
-										<br/>
-										<button ng-click="uploader.uploadAll()">upload</button>
-									</li>
-								</ul>-->
-                                <!--<label for='catImage'>Category Image</label>
-  									<input id='catImage' name='catImage' type="file" nv-file-select="" uploader="uploader" />-->
-                                <!--<input type="password" name="password" class="form-control" ng-model="vm.newcategory.password" required>-->
-
                             </div>
                             <div class="form-group has-error">
                                 <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted">
@@ -63,13 +48,6 @@
                                 <button class="btn btn-default btn-lg btn-save" type="submit">Save</button>
                                 <a class="btn btn-default btn-lg btn-cancel" ui-sref="signup">Cancel</a>
                             </div>
-
-                            <!--<hr/>
-        <div class="row">
-          <div class="col-sm-4 col-md-3">
-            <oauth-buttons classes="btn-block"></oauth-buttons>
-          </div>
-        </div>-->
                         </form>
                     </div>
                     <div class='col-md-2'>
