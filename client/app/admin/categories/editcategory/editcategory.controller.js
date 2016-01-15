@@ -8,7 +8,8 @@ angular.module('jvapesApp')
         $scope.category = {
             name: '',
             parent: '',
-            active: false
+            active: false, 
+            image: ''
         };
         $scope.file = '';
         
@@ -38,10 +39,10 @@ angular.module('jvapesApp')
         $scope.upload = function (file) {
             Upload.upload({
                 url: '/api/categories/upload',
-                data: { file: file, 'username': $scope.username }
+                data: { file: file, 'username': $scope.username, 'category':$scope.category._id }
             }).then(function (resp) {
                 console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + angular.toJson(resp.data));
-                $scope.file =  resp.data;
+                $scope.category.image = resp.data;
             }, function (resp) {
                 console.log('Error status: ' + resp.status);
             }, function (evt) {
