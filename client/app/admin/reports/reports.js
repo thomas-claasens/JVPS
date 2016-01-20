@@ -6,6 +6,8 @@ angular.module('jvapesApp')
       .state('reports', {
         url: '/admin/reports',
         templateUrl: 'app/admin/reports/reports.html',
-        controller: 'ReportsCtrl'
+        controller: 'ReportsCtrl',
+        controllerAs: 'vm',
+        authenticate: 'admin'
       });
   });

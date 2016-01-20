@@ -6,6 +6,8 @@ angular.module('jvapesApp')
       .state('stock', {
         url: '/admin/stock',
         templateUrl: 'app/admin/stock/stock.html',
-        controller: 'StockCtrl'
+        controller: 'StockCtrl',
+        controllerAs: 'vm',
+        authenticate: 'admin'
       });
   });

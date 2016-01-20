@@ -3,10 +3,10 @@
 angular.module('jvapesApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('postagebands', {
-        url: '/admin/postagebands',
-        templateUrl: 'app/admin/postagebands/postagebands.html',
-        controller: 'PostagebandsCtrl',
+      .state('product', {
+        url: '/admin/product/:category',
+        templateUrl: 'app/admin/product/product.html',
+        controller: 'ProductCtrl',
         controllerAs: 'vm',
         authenticate: 'admin'
       });

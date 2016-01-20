@@ -6,6 +6,8 @@ angular.module('jvapesApp')
       .state('countries', {
         url: '/admin/countries',
         templateUrl: 'app/admin/countries/countries.html',
-        controller: 'CountriesCtrl'
+        controller: 'CountriesCtrl',
+        controllerAs: 'vm',
+        authenticate: 'admin'
       });
   });
