@@ -10,28 +10,28 @@
                 <th class="thin number">Delete</th>
             </tr>
 
-            <% foreach (var basketItem in Model.BasketItems) { %>
+            <!--<% foreach (var basketItem in Model.BasketItems) { %>-->
 
                 <tr>
                     <td>{{1}}</td>
                     <td>
-                        <%= basketItem.Size.Name%>
+                        <!--<%= basketItem.Size.Name%>-->
                     </td>
                     <td class="number">
-                        <%= basketItem.Quantity%>
+                        <!--<%= basketItem.Quantity%>-->
                     </td>
                     <td class="number">
-                        <%= basketItem.Size.Product.Price.ToStringWithSymbol()%>
+                        <!--<%= basketItem.Size.Product.Price.ToStringWithSymbol()%>-->
                     </td>
                     <td class="number">
-                        <%= basketItem.Total.ToStringWithSymbol()%>
+                        <!--<%= basketItem.Total.ToStringWithSymbol()%>-->
                     </td>
                     <td class="number">
-                        <%= Html.ActionLink<BasketController>(c => c.Remove(basketItem.Id), "X")%>
+                        <!--<%= Html.ActionLink<BasketController>(c => c.Remove(basketItem.Id), "X")%>-->
                     </td>
                 </tr>
 
-                <% } %>
+                <!--<% } %>-->
 
                     <tr class="total">
                         <td>Total</td>
@@ -39,12 +39,12 @@
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td class="number">
-                            <%= Model.Total.ToStringWithSymbol()%>
+                            <!--<%= Model.Total.ToStringWithSymbol()%>-->
                         </td>
                         <td>&nbsp;</td>
                     </tr>
 
-                    <% Html.RenderAction<PostageDetailController>(c => c.Index(Model.Id)); %>
+                    <!--<% Html.RenderAction<PostageDetailController>(c => c.Index(Model.Id)); %>-->
 
         </table>
 
