@@ -8,7 +8,7 @@
       this.$http = $http;
       this.awesomeThings = [];
       this.categories = [];
-      this.homePageContent = '<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>';
+      this.homePageContent = '';
 
       $http.get('/api/categories').then(response => {
         $log.info(response.data);

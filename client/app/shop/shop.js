@@ -6,6 +6,7 @@ angular.module('jvapesApp')
       .state('shop', {
         url: '/shop',
         templateUrl: 'app/shop/shop.html',
-        controller: 'ShopCtrl'
+        controller: 'ShopCtrl',
+        controllerAs: 'shop'
       });
   });
