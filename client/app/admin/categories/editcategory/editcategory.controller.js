@@ -8,14 +8,14 @@ angular.module('jvapesApp')
         $scope.category = {
             name: '',
             parent: '',
-            active: false, 
+            active: false,
             image: ''
         };
         $scope.file = '';
-        
+
         $scope.saveCategory = function (form) {
             if ($scope.categoryId != -1) {
-                $log.info(angular.toJson($scope.category))
+               // $log.info(angular.toJson($scope.category))
                 if ($scope.category.parent == "") {
                     $scope.category.parent = undefined;
                 }
@@ -26,7 +26,7 @@ angular.module('jvapesApp')
 
                 });
             } else {
-                $log.info(angular.toJson($scope.category));
+               // $log.info(angular.toJson($scope.category));
                 if ($scope.category.parent == "") {
                     $scope.category.parent = undefined;
                 }
@@ -39,7 +39,7 @@ angular.module('jvapesApp')
         $scope.upload = function (file) {
             Upload.upload({
                 url: '/api/categories/upload',
-                data: { file: file, 'username': $scope.username, 'category':$scope.category._id }
+                data: { file: file, 'username': $scope.username, 'category': $scope.category._id }
             }).then(function (resp) {
                 console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + angular.toJson(resp.data));
                 $scope.category.image = resp.data;
@@ -50,38 +50,38 @@ angular.module('jvapesApp')
                 console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
             });
         };
-//         // for multiple files:
-//         $scope.uploadFiles = function (files) {
-//             if (files && files.length) {
-//                 for (var i = 0; i < files.length; i++) {
-//                     Upload.upload({..., data: { file: files[i] }, ...})...;
-//         }
-// // or send them all together for HTML5 browsers:
-// Upload.upload({..., data: { file: files }, ...})...;
-//       }
-//     }
+        //         // for multiple files:
+        //         $scope.uploadFiles = function (files) {
+        //             if (files && files.length) {
+        //                 for (var i = 0; i < files.length; i++) {
+        //                     Upload.upload({..., data: { file: files[i] }, ...})...;
+        //         }
+        // // or send them all together for HTML5 browsers:
+        // Upload.upload({..., data: { file: files }, ...})...;
+        //       }
+        //     }
 
-Activate();
+        Activate();
 
-function Activate() {
-    $http.get('/api/categories').then(response => {
-        $scope.categories = response.data;
-        socket.syncUpdates('category', $scope.categories);
-    });
+        function Activate() {
+            $http.get('/api/categories').then(response => {
+                $scope.categories = response.data;
+                socket.syncUpdates('category', $scope.categories);
+            });
 
-    $scope.$on('$destroy', function () {
-        socket.unsyncUpdates('category');
-    });
+            $scope.$on('$destroy', function () {
+                socket.unsyncUpdates('category');
+            });
 
-}
-if ($stateParams.id != '-1') {
-    $http.get('/api/categories/' + $stateParams.id).then(response => {
-        $scope.category = response.data;
-        socket.syncUpdates('category', $scope.categories);
-    });
+        }
+        if ($stateParams.id != '-1') {
+            $http.get('/api/categories/' + $stateParams.id).then(response => {
+                $scope.category = response.data;
+                socket.syncUpdates('category', $scope.categories);
+            });
 
-    $scope.$on('$destroy', function () {
-        socket.unsyncUpdates('category');
-    });
-}
+            // $scope.$on('$destroy', function () {
+            //     socket.unsyncUpdates('category');
+            // });
+        }
     });

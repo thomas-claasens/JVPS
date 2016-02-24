@@ -3,23 +3,27 @@
 
   class MainController {
 
-    constructor($log, $scope, $stateParams, $http, Upload) {
+    constructor($log, $scope, $stateParams, $http, Upload, socket) {
       this.$http = $http;
       this.products = [];
+      this.category = {};
       //this.state = $stateParams;
-      $http.get('/api/product/' + $stateParams.category).then(response => { 
+      $http.get('/api/products/category/' + $stateParams.category).then(response => { 
           this.products = response.data;
-          $log.debug(response.status);
+          socket.syncUpdates('products', this.products);
+          //$log.debug(response.status);
       });
-    //   $http.get('/api/categories').then(response => {
-    //     $log.info(response.data);
-    //     this.categories = response.data;
-    //     socket.syncUpdates('category', this.categories);
-    //   });
-
-    //   $scope.$on('$destroy', function () {
-    //     socket.unsyncUpdates('category');
-    //   });
+      $scope.$on('$destroy', function () {
+        socket.unsyncUpdates('products');
+        socket.unsyncUpdates('category');
+      });
+      $http.get('/api/categories/' + $stateParams.category).then(response => {
+       // $log.info(response.data);
+        this.category = response.data;
+        socket.syncUpdates('category', this.category);
+      });
+      
+      
 
     //   $http.get('/api/homepage').then(response => {
     //     this.awesomeThings = response.data;

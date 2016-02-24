@@ -10,7 +10,7 @@
       this.categories = [];
      
       this.deleteCategory = function (cat) {
-        $log.info(cat);
+       // $log.info(cat);
         $http.delete('/api/categories/' + cat._id).then(response => {
         });
       };
