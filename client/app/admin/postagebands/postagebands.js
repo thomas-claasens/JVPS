@@ -6,6 +6,8 @@ angular.module('jvapesApp')
       .state('postagebands', {
         url: '/admin/postagebands',
         templateUrl: 'app/admin/postagebands/postagebands.html',
-        controller: 'PostagebandsCtrl'
+        controller: 'PostagebandsCtrl',
+        controllerAs: 'vm',
+        authenticate: 'admin'
       });
   });

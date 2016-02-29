@@ -8,6 +8,6 @@ angular.module('jvapesApp')
         templateUrl: 'app/admin/orders/orders.html',
         controller: 'OrdersCtrl',
         controllerAs: 'orders',
-        authenticate: 'orders'
+        authenticate: 'admin'
       });
   });

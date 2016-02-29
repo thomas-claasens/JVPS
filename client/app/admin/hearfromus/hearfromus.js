@@ -6,6 +6,8 @@ angular.module('jvapesApp')
       .state('hearfromus', {
         url: '/admin/hearfromus',
         templateUrl: 'app/admin/hearfromus/hearfromus.html',
-        controller: 'HearfromusCtrl'
+        controller: 'HearfromusCtrl',
+        controllerAs: 'vm',
+        authenticate: 'admin'
       });
   });

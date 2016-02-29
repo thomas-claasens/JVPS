@@ -1,0 +1,42 @@
+<navbar></navbar>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <shopping-basket-read-only></shopping-basket-read-only>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10" style='background-color:transparent'>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div ng-repeat='product in shopproduct.products'>
+                        <div ng-show="shopproduct.isAdmin()">
+                            <a ui-sref="editproduct({id: category._id})"><span class='glyphicon glyphicon-edit'></span> Edit</a>
+                            <br />
+                            <a href=""><span class="glyphicon glyphicon-share"></span> Copy</a>
+                        </div>
+
+                    </div>
+                    <!--<% if(User.IsAdministrator()) { %>
+    <%= Html.ActionLink<ProductController>(c => c.Edit(ViewData.Model.Product.Id), "Edit", new { @class = "linkButton" })%>
+    <% Html.PostAction<ProductCopyController>(c => c.Copy(ViewData.Model.Product), "Copy");%>
+<%
+} %>-->
+                    <!--<div class="row">
+                        <div class='col-md-3' data-ng-repeat='category in shop.categories'>
+                            <shopmenu category='category'></shopmenu>
+                        </div>
+
+                    </div>-->
+                    <!--<shopping-basket></shopping-basket>-->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<footer></footer>

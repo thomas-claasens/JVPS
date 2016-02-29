@@ -6,6 +6,8 @@ angular.module('jvapesApp')
       .state('reviews', {
         url: '/admin/reviews',
         templateUrl: 'app/admin/reviews/reviews.html',
-        controller: 'ReviewsCtrl'
+        controller: 'ReviewsCtrl',
+        controllerAs: 'vm',
+        authenticate: 'admin'
       });
   });

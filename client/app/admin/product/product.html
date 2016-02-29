@@ -1,0 +1,45 @@
+<navbar></navbar>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-11" style='background-color:transparent'>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        {{vm.category.name}} - Products
+
+						<button class='btn btn-default pull-right' ui-sref="categories">Back</button>
+					</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <button class='btn btn-default pull-left' ui-sref="editproduct({id: -1})">New Product</button>
+                        </div>
+
+                    </div>
+                    <!--<hr/>-->
+                    <div class="row">
+                       {{vm.products |json}}
+                        <!--<div data-ng-repeat="cat in vm.categories" class='col-md-2'>
+                            <a ui-sref="editcategory({id: cat._id})">
+                                <img data-ng-src="{{cat.image}}" style='width:80px;height;80px'>
+                                <br/> Edit - {{cat.name}}</a>
+                            <br />
+                            <a ui-sref="product({id: cat._id})">Products</a>
+                            <br />
+                            <a ng-click="vm.deleteCategory(cat)" class="btn btn-danger" href='#'><span class="glyphicon glyphicon-trash pull-right"></span></a>
+                        </div>-->
+                    </div>
+                    <!--<div class="col-md-2">
+							{{vm.newCategory |json}}
+						</div>-->
+                    <!--<div class="col-md-4">
+							
+						</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<footer></footer>

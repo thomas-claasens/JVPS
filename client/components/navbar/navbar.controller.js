@@ -17,15 +17,6 @@ class NavbarController {
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
-    // this.categories = [];
-    // $http.get('/api/categories').then(response => {
-    //     this.categories = response.data;
-    //     socket.syncUpdates('category', this.categories);
-    //   });
-
-    //   $scope.$on('$destroy', function () {
-    //     socket.unsyncUpdates('category');
-    //   });
   }
 }
 

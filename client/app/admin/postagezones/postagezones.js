@@ -6,6 +6,8 @@ angular.module('jvapesApp')
       .state('postagezones', {
         url: '/admin/postagezones',
         templateUrl: 'app/admin/postagezones/postagezones.html',
-        controller: 'PostagezonesCtrl'
+        controller: 'PostagezonesCtrl',
+        controllerAs: 'vm',
+        authenticate: 'admin'
       });
   });

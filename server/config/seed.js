@@ -13,7 +13,7 @@ import Category from '../api/category/category.model.js';
    .then(function () { 
      Category.create({
        name: 'Main',
-       urlName: '/',
+       imageUrlName: '/',
        active: true
      })
    });

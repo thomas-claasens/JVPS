@@ -4,13 +4,13 @@
 
   class CategoriesCtrl {
 
-    constructor($http, $scope, $log, Modal, socket, FileUploader) {
+    constructor($http, $scope, $log, Modal, socket) {
 
       this.$http = $http;
       this.categories = [];
      
       this.deleteCategory = function (cat) {
-        $log.info(cat);
+       // $log.info(cat);
         $http.delete('/api/categories/' + cat._id).then(response => {
         });
       };

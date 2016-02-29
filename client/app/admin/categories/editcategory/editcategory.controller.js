@@ -1,98 +1,87 @@
 'use strict';
 
 angular.module('jvapesApp')
-  .controller('EditcategoryCtrl', function ($log, $scope, $stateParams, socket, $http, FileUploader) {
-    $scope.categoryId = $stateParams.id;
-    $log.info($scope.categoryId);
-    $scope.categories = [];
-    $scope.category = {
-      name: '',
-      parent: '',
-      active: false
-    };
+    .controller('EditcategoryCtrl', function ($log, $scope, $stateParams, socket, $http, Upload) {
+        $scope.categoryId = $stateParams.id;
+        $log.info($scope.categoryId);
+        $scope.categories = [];
+        $scope.category = {
+            name: '',
+            parent: '',
+            active: false,
+            image: ''
+        };
+        $scope.file = '';
 
-    $scope.saveCategory = function (form) {
-      if ($scope.categoryId != -1) {
-        $log.info(form);
-        if ($scope.category.parent == "") {
-          $scope.category.parent = undefined;
+        $scope.saveCategory = function (form) {
+            if ($scope.categoryId != -1) {
+               // $log.info(angular.toJson($scope.category))
+                if ($scope.category.parent == "") {
+                    $scope.category.parent = undefined;
+                }
+                if ($scope.category.active == undefined) {
+                    $scope.category.active = false;
+                }
+                $http.put('/api/categories/' + $scope.category._id, $scope.category).then(response => {
+
+                });
+            } else {
+               // $log.info(angular.toJson($scope.category));
+                if ($scope.category.parent == "") {
+                    $scope.category.parent = undefined;
+                }
+                $http.post('/api/categories', $scope.category).then(response => {
+                });
+            }
+
+        };
+        // upload on file select or drop
+        $scope.upload = function (file) {
+            Upload.upload({
+                url: '/api/categories/upload',
+                data: { file: file, 'username': $scope.username, 'category': $scope.category._id }
+            }).then(function (resp) {
+                console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + angular.toJson(resp.data));
+                $scope.category.image = resp.data;
+            }, function (resp) {
+                console.log('Error status: ' + resp.status);
+            }, function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            });
+        };
+        //         // for multiple files:
+        //         $scope.uploadFiles = function (files) {
+        //             if (files && files.length) {
+        //                 for (var i = 0; i < files.length; i++) {
+        //                     Upload.upload({..., data: { file: files[i] }, ...})...;
+        //         }
+        // // or send them all together for HTML5 browsers:
+        // Upload.upload({..., data: { file: files }, ...})...;
+        //       }
+        //     }
+
+        Activate();
+
+        function Activate() {
+            $http.get('/api/categories').then(response => {
+                $scope.categories = response.data;
+                socket.syncUpdates('category', $scope.categories);
+            });
+
+            $scope.$on('$destroy', function () {
+                socket.unsyncUpdates('category');
+            });
+
         }
-        $http.put('/api/categories/' + $scope.category._id, $scope.category).then(response => { 
-          
-        });
-      } else {
-        $log.info(form);
-         if ($scope.category.parent == "") {
-          $scope.category.parent = undefined;
+        if ($stateParams.id != '-1') {
+            $http.get('/api/categories/' + $stateParams.id).then(response => {
+                $scope.category = response.data;
+                socket.syncUpdates('category', $scope.categories);
+            });
+
+            // $scope.$on('$destroy', function () {
+            //     socket.unsyncUpdates('category');
+            // });
         }
-        $http.post('/api/categories', $scope.category).then(response => {
-        });
-      }
-
-    };
-
-    $scope.uploader = new FileUploader({
-      url: 'api/categories/image'
     });
-    Activate();
-
-    function Activate() {
-      $http.get('/api/categories').then(response => {
-        $scope.categories = response.data;
-        socket.syncUpdates('category', $scope.categories);
-      });
-
-      $scope.$on('$destroy', function () {
-        socket.unsyncUpdates('category');
-      });
-      
-      ///Uploader Code.
-      
-
-      $scope.uploader.onWhenAddingFileFailed = function (item /*{File|FileLikeObject}*/, filter, options) {
-        console.info('onWhenAddingFileFailed', item, filter, options);
-      };
-      $scope.uploader.onAfterAddingFile = function (fileItem) {
-        console.info('onAfterAddingFile', fileItem);
-      };
-      $scope.uploader.onAfterAddingAll = function (addedFileItems) {
-        console.info('onAfterAddingAll', addedFileItems);
-      };
-      $scope.uploader.onBeforeUploadItem = function (item) {
-        console.info('onBeforeUploadItem', item);
-      };
-      $scope.uploader.onProgressItem = function (fileItem, progress) {
-        console.info('onProgressItem', fileItem, progress);
-      };
-      $scope.uploader.onProgressAll = function (progress) {
-        console.info('onProgressAll', progress);
-      };
-      $scope.uploader.onSuccessItem = function (fileItem, response, status, headers) {
-        console.info('onSuccessItem', fileItem, response, status, headers);
-      };
-      $scope.uploader.onErrorItem = function (fileItem, response, status, headers) {
-        console.info('onErrorItem', fileItem, response, status, headers);
-      };
-      $scope.uploader.onCancelItem = function (fileItem, response, status, headers) {
-        console.info('onCancelItem', fileItem, response, status, headers);
-      };
-      $scope.uploader.onCompleteItem = function (fileItem, response, status, headers) {
-        console.info('onCompleteItem', fileItem, response, status, headers);
-      };
-      $scope.uploader.onCompleteAll = function () {
-        console.info('onCompleteAll');
-      };
-
-      console.info('uploader', $scope.uploader);
-    }
-    if ($stateParams.id != '-1') {
-      $http.get('/api/categories/' + $stateParams.id).then(response => {
-        $scope.category = response.data;
-        socket.syncUpdates('category', $scope.categories);
-      });
-
-      $scope.$on('$destroy', function () {
-        socket.unsyncUpdates('category');
-      });
-    }
-  });

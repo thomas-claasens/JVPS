@@ -6,6 +6,8 @@ angular.module('jvapesApp')
       .state('mailinglist', {
         url: '/admin/mailinglist',
         templateUrl: 'app/admin/mailinglist/mailinglist.html',
-        controller: 'MailinglistCtrl'
+        controller: 'MailinglistCtrl',
+        controllerAs: 'vm',
+        authenticate: 'admin'
       });
   });
