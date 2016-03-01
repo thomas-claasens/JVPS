@@ -2,32 +2,32 @@
  * Homepage model events
  */
 
-'use strict';
+// 'use strict';
 
-var EventEmitter = require('events').EventEmitter;
-var Homepage = require('./homepage.model');
-var HomepageEvents = new EventEmitter();
+// var EventEmitter = require('events').EventEmitter;
+// var Homepage = require('./homepage.model');
+// var HomepageEvents = new EventEmitter();
 
-// Set max event listeners (0 == unlimited)
-HomepageEvents.setMaxListeners(0);
+// // Set max event listeners (0 == unlimited)
+// HomepageEvents.setMaxListeners(0);
 
-// Model events
-var events = {
-  'save': 'save',
-  'remove': 'remove'
-};
+// // Model events
+// var events = {
+//   'save': 'save',
+//   'remove': 'remove'
+// };
 
-// Register the event emitter to the model events
-for (var e in events) {
-  var event = events[e];
-  Homepage.schema.post(e, emitEvent(event));
-}
+// // Register the event emitter to the model events
+// for (var e in events) {
+//   var event = events[e];
+//   Homepage.schema.post(e, emitEvent(event));
+// }
 
-function emitEvent(event) {
-  return function(doc) {
-    HomepageEvents.emit(event + ':' + doc._id, doc);
-    HomepageEvents.emit(event, doc);
-  }
-}
+// function emitEvent(event) {
+//   return function(doc) {
+//     HomepageEvents.emit(event + ':' + doc._id, doc);
+//     HomepageEvents.emit(event, doc);
+//   }
+// }
 
-module.exports = HomepageEvents;
+// module.exports = HomepageEvents;

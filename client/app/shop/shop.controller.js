@@ -8,10 +8,10 @@ angular.module('jvapesApp')
         $http.get('/api/categories').then(response => {
             $log.info(response.data);
             this.categories = response.data;
-            socket.syncUpdates('category', this.categories);
+            // socket.syncUpdates('category', this.categories);
         });
 
-        $scope.$on('$destroy', function () {
-            socket.unsyncUpdates('category');
-        });
+        // $scope.$on('$destroy', function () {
+        //     socket.unsyncUpdates('category');
+        // });
     });

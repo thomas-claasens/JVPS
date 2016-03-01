@@ -17,12 +17,12 @@
 
       $http.get('/api/categories').then(response => {
         this.categories = response.data;
-        socket.syncUpdates('category', this.categories);
+      //  socket.syncUpdates('category', this.categories);
       });
 
-      $scope.$on('$destroy', function () {
-        socket.unsyncUpdates('category');
-      });
+    //   $scope.$on('$destroy', function () {
+    //     socket.unsyncUpdates('category');
+    //   });
     }
   }
 
