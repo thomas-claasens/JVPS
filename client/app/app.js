@@ -15,6 +15,7 @@ angular.module('jvapesApp', [
     'angular-loading-bar',
     'ngFileUpload',
     'ui.grid'
+   
 
 ])
     .config(function ($urlRouterProvider, $locationProvider) {
