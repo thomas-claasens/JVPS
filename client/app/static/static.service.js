@@ -21,6 +21,6 @@
             }
         }
     };
-    angular.module('jvapesApp.static')
-        .factory('static', StaticService);
+    angular.module('jvapesApp.staticservice')
+        .factory('staticservice', StaticService);
 });
