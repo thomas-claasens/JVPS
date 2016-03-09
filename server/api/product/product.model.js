@@ -7,7 +7,8 @@ var ProductSchema = new mongoose.Schema({
   info: String,
   active: Boolean, 
   image: String,
-  category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'}
+  category: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
+  sizing: [String]
 });
 
 export default mongoose.model('Product', ProductSchema);
