@@ -13,22 +13,22 @@
       $http.get('/api/categories').then(response => {
         $log.info(response.data);
         this.categories = response.data;
-        socket.syncUpdates('category', this.categories);
+      //  socket.syncUpdates('category', this.categories);
       });
 
-      $scope.$on('$destroy', function () {
-        socket.unsyncUpdates('category');
-      });
+    //   $scope.$on('$destroy', function () {
+    //     socket.unsyncUpdates('category');
+    //   });
 
       $http.get('/api/homepage').then(response => {
         this.awesomeThings = response.data;
-        this.homePageContent = this.awesomeThings[0].info;
-        socket.syncUpdates('home', this.awesomeThings);
+        // this.homePageContent = this.awesomeThings[0].info;
+        // socket.syncUpdates('home', this.awesomeThings);
       });
 
-      $scope.$on('$destroy', function () {
-        socket.unsyncUpdates('home');
-      });
+    //   $scope.$on('$destroy', function () {
+    //     socket.unsyncUpdates('home');
+    //   });
     }
   }
 

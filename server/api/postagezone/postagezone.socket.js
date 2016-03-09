@@ -4,21 +4,21 @@
 
 // 'use strict';
 
-// var HomepageEvents = require('./homepage.events');
+// var PostagezoneEvents = require('./postagezone.events');
 
 // // Model events to emit
 // var events = ['save', 'remove'];
 
-// exports.register = function(socket) {
+// export function register(socket) {
 //   // Bind model events to socket events
 //   for (var i = 0, eventsLength = events.length; i < eventsLength; i++) {
 //     var event = events[i];
-//     var listener = createListener('home:' + event, socket);
+//     var listener = createListener('postagezone:' + event, socket);
 
-//     HomepageEvents.on(event, listener);
+//     PostagezoneEvents.on(event, listener);
 //     socket.on('disconnect', removeListener(event, listener));
 //   }
-// };
+// }
 
 
 // function createListener(event, socket) {
@@ -29,6 +29,6 @@
 
 // function removeListener(event, listener) {
 //   return function() {
-//     HomepageEvents.removeListener(event, listener);
+//     PostagezoneEvents.removeListener(event, listener);
 //   };
 // }

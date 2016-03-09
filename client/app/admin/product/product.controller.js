@@ -6,7 +6,7 @@
     constructor($log, $scope, $stateParams, $http, Upload, socket) {
       this.$http = $http;
       this.products = [];
-      this.category = {};
+      this.category = {};//$stateParams.category;
       //this.state = $stateParams;
       $http.get('/api/products/category/' + $stateParams.category).then(response => { 
           this.products = response.data;

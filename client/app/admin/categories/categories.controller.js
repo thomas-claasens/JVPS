@@ -4,10 +4,10 @@
 
   class CategoriesCtrl {
 
-    constructor($http, $scope, $log, Modal, socket) {
+    constructor($http, $scope, $log, Modal, socket, staticservice) {
 
       this.$http = $http;
-      this.categories = [];
+      this.categories = staticservice.getCategories();
      
       this.deleteCategory = function (cat) {
        // $log.info(cat);
@@ -15,14 +15,7 @@
         });
       };
 
-      $http.get('/api/categories').then(response => {
-        this.categories = response.data;
-        socket.syncUpdates('category', this.categories);
-      });
-
-      $scope.$on('$destroy', function () {
-        socket.unsyncUpdates('category');
-      });
+     
     }
   }
 
