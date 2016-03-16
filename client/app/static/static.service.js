@@ -1,26 +1,23 @@
 'use strict';
-
-
-(function () {
-    function StaticService($scope, $http, $log, socket) {
+angular.module('jvapesApp')
+    .factory('Catsvc', function($http, $rootScope, $log, socket) {
         this.categories = [];
         return {
-            getCategories: function () {
-                $log.info('Service Started');
-                if (this.categories.length == 0) {
-                    $http.get('/api/categories').then(response => {
-                        this.categories = response.data;
-                        socket.syncUpdates('category', this.categories);
-                    });
+                categories: function() {
+            $log.info('Service Started');
+            if (this.categories.length == 0) {
+                $http.get('/api/categories').then(response => {
+                    $log.info('Categories:', response.data);
+                    this.categories = response.data;
+                    return response.data;
+              //      socket.syncUpdates('category', this.categories);
+                });
 
-                    $scope.$on('$destroy', function () {
-                        socket.unsyncUpdates('category');
-                    });
-                }
-                return this.categories;
+                // $rootScope.$scope.$on('$destroy', function() {
+                //     socket.unsyncUpdates('category');
+                // });
             }
-        }
-    };
-    angular.module('jvapesApp.staticservice')
-        .factory('staticservice', StaticService);
-});
+            return undefined;
+        }};
+    });
+

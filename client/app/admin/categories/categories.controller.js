@@ -4,10 +4,16 @@
 
   class CategoriesCtrl {
 
-    constructor($http, $scope, $log, Modal, socket, staticservice) {
+    constructor($http, $scope, $log, Modal, socket, Catsvc) {
 
-      this.$http = $http;
-      this.categories = staticservice.getCategories();
+        this.$http = $http;
+        var response = Catsvc.categories();
+        $log.info('Response:', response());
+        //.then(function(res) {
+    //         $log.info('Response in page', res);
+    //         this.categories = res;
+    //     });
+    //    ;
      
       this.deleteCategory = function (cat) {
        // $log.info(cat);
