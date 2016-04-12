@@ -5,51 +5,78 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-						<!--<div ng-hide='categoryId == -1'>Edit Category</div>
-						<div ng-hide='categoryId != -1'>New Category</div> -->
-						<!--<button class='btn btn-default pull-right' ui-sref="categories">Back</button>-->
 					</h3>
                 </div>
                 <div class="panel-body">
                     <div class="col-md-9">
-                        <form class="form" name="form" ng-submit="saveCategory(form)" novalidate>
+
+                       <form class="form" name="form" ng-submit="saveProduct(form)" novalidate>
                             <div class="form-group">
                                 <label for='name'>Name</label>
-                                <input type="text" name="name" class="form-control" ng-model="product.name" required>
-                            </div>
-                            <div class="form-group"> 
-                                <label for="parentCategory">Parent Category</label>
-                                <!--<select class="form-control" name="parentCategory" id="parentCategory" ng-model="product.category">
-                                    <option value=''>None</option>
-                                    <option ng-repeat="category in product.categories" value="{{option._id}}">{{option.name}}</option>
-                                </select>-->
+                                <input type="text" name="name" class="form-control" ng-model="pctrl.product.name" required>
                             </div>
                             <div class="form-group">
-                                <label for='active'>Active</label>
-                                <input type="checkbox" name="active" id='active' class="form-control" ng-model="product.active" required>
+                                <label for='name'>Categories</label>
+                                <div data-ng-repeat="cat in vm.categories" ng-model="pctrl.product.categories">
+                                    <input type="checkbox" name="chkCategory" class="form-control" >{{cat.name}}
+                                </div>
                             </div>
                             <div class="form-group">
-                                <div class="btn btn-default" ngf-select="upload($file)">Upload on file select</div>
-                                <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
-                                Image thumbnail:
-                                <img ngf-thumbnail="product.image || '/thumb.jpg'" ngf-size="{width: 128, height: 128, quality: 0.9}" style='width:128px;height:128px'/>
-                            </div>
-                            <div class="form-group has-error">
-                                <!--<p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted">
-                                    Please enter your email and password.
-                                </p>
-                                <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
-                                    Please enter a valid email.
-                                </p>-->
-
-                                <p class="help-block">{{ vm.errors.other }}</p>
-                            </div>
-
-                            <div>
-                                <button class="btn btn-default btn-lg btn-save" type="submit">Save</button>
-                                <a class="btn btn-default btn-lg btn-cancel" ui-sref="product({category: vm.category})">Cancel</a>
+                                <label for='name'>Debug</label>
+                                <label>{{pctrl.product |json}} {{1 + 1}}</label>
+                                <!--<div data-ng-repeat="cat in vm.categories">
+                                    <input type="checkbox" name="chkCategory" class="form-control" ng-model="category.name"> {{cat.name}}
+                                </div>-->
                             </div>
                         </form>
+                        
+                        <!--<label for="CategoryIds">Categories (ctrl+click to select more than one)</label>
+                        <%= Html.MutipleSelectComboFor<ProductViewData, Category>("CategoryIds", Model.CategoryIds, category => category.Id != 1)%>
+                            <%= this.TextBox(x => x.Weight).Label("Weight") %>
+                                <%= this.TextBox(x => x.Price).Label("Price " + Money.Symbol) %>
+                                    <%= this.CheckBox(x => x.IsActive).Label("Active") %>
+
+                                        <%= this.TextArea(x => x.Description).Label("Description") %>
+
+                                            <h3>Sizes</h3>
+
+                                            <p>
+                                                <% foreach(var size in ViewData.Model.Sizes) { %>
+                                                    <%= size %>&nbsp;
+                                                        <% } %>
+
+                                                            <%= Html.ActionLink<ProductController>(c => c.ClearSizes(ViewData.Model.ProductId), "Clear all sizes")%>
+                                            </p>
+                                            <div class="sizeInput">
+                                                <% for(int i=0; i<10; i++) { %>
+                                                    <%= Html.TextBox("Sizes[" + i + "]")%>
+                                                        <% } %>
+                                            </div>
+
+                                            <h3>Photos</h3>
+
+                                            <div class="imageList">
+                                                <% foreach(var productImage in ViewData.Model.ProductImages.InOrder()) { %>
+                                                    <div class="imageEdit">
+                                                        <%= Html.Image("~/ProductPhotos/" + productImage.Image.ThumbFileName) %>
+                                                            <br />
+                                                            <%= Html.UpArrowLink<ProductImageController>(c => c.MoveImageUp(ViewData.Model.ProductId, productImage.Position)) %>
+                                                                <%= Html.DownArrowLink<ProductImageController>(c => c.MoveImageDown(ViewData.Model.ProductId, productImage.Position)) %> &nbsp;&nbsp;
+                                                                    <%= Html.CrossLink<ProductImageController>(c => c.DeleteImage(ViewData.Model.ProductId, productImage.Id)) %>
+                                                    </div>
+                                                    <% } %>
+                                            </div>
+
+                                            <div class="clear" />
+
+                                            <% for (int i = 0; i < 5; i++) { %>
+                                                <input type="file" id="image_<%= i.ToString() %>" name="image_<%= i.ToString() %>" />
+                                                <% } %>
+
+                                                    <input type="submit" value="Save Changes" />
+                                                    <% } %>
+
+                                                        <% Html.InitialiseRichTextEditor(); %>-->
                     </div>
                     <div class='col-md-2'>
                         {{newCategory}}

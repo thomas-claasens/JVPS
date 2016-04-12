@@ -7,7 +7,7 @@ angular.module('jvapesApp')
         url: '/admin/product/editproduct/:id/:category',
         templateUrl: 'app/admin/product/editproduct/editproduct.html',
         controller: 'EditproductCtrl', 
-        controlerAs: 'vm',
+        controlerAs: 'pctrl',
         authenticate: 'admin'
       });
   });
